@@ -81,7 +81,7 @@ flutter:
         - asset: assets/fonts/FontsFree-Net-ir_sans.ttf
           weight: 700
         - asset: assets/fonts/FontsFree-Net-ir_sans.ttf
-          weight: 500
+          weight: 300
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
