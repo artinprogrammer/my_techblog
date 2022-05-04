@@ -6,7 +6,6 @@ import 'package:tec_blog/Models/fake_data.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
 
 class MainScreen extends StatelessWidget {
-
   const MainScreen({Key? key}) : super(key: key);
 
   @override
@@ -14,7 +13,7 @@ class MainScreen extends StatelessWidget {
     // needed vars
     var textTheme = Theme.of(context).textTheme;
     var size = MediaQuery.of(context).size;
-    double bodyMargin = size.width/12;
+    double bodyMargin = size.width / 12;
     // the UI
     return SafeArea(
       child: Scaffold(
@@ -105,41 +104,43 @@ class MainScreen extends StatelessWidget {
               SizedBox(
                 height: 60,
                 child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: tagList.length,
-                  itemBuilder: (context,index){
-                    return Padding(
-                      padding: EdgeInsets.fromLTRB(0,8,index == 0 ? bodyMargin : 15,8),
-                      child: Container(
-                        height: 60,
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                          gradient: LinearGradient(
-                            colors: gradiantColors.tags,
-                            begin: Alignment.centerRight,
-                            end: Alignment.centerLeft  
+                    scrollDirection: Axis.horizontal,
+                    itemCount: tagList.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.fromLTRB(
+                            0, 8, index == 0 ? bodyMargin : 15, 8),
+                        child: Container(
+                          height: 60,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            gradient: LinearGradient(
+                                colors: gradiantColors.tags,
+                                begin: Alignment.centerRight,
+                                end: Alignment.centerLeft),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(16, 8, 8, 8),
+                            child: Row(
+                              children: [
+                                ImageIcon(
+                                  Assets.icons.hashtagIcon,
+                                  color: Colors.white,
+                                  size: 16,
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  tagList[index].title,
+                                  style: textTheme.headline2,
+                                )
+                              ],
+                            ),
                           ),
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(16, 8, 8, 8),
-                          child: Row(
-                            children: [
-                              ImageIcon(
-                              Assets.icons.hashtagIcon,
-                              color: Colors.white,
-                              size: 16,
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              Text(tagList[index].title,style: textTheme.headline2,)
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  }
-                ),
+                      );
+                    }),
               ),
               const SizedBox(
                 height: 32,
@@ -147,39 +148,106 @@ class MainScreen extends StatelessWidget {
               // see more
 
               Padding(
-                padding: EdgeInsets.only(right: bodyMargin,bottom: 8),
+                padding: EdgeInsets.only(right: bodyMargin, bottom: 8),
                 child: Row(
                   children: [
-                    ImageIcon(Assets.icons.penIcon,color: solidColors.seeMore,),
-                    const SizedBox(width: 8,),
-                     Text(MyStrings.viewViralBlog,style: textTheme.headline3,)
+                    ImageIcon(
+                      Assets.icons.penIcon,
+                      color: solidColors.seeMore,
+                    ),
+                    const SizedBox(
+                      width: 8,
+                    ),
+                    Text(
+                      MyStrings.viewViralBlog,
+                      style: textTheme.headline3,
+                    )
                   ],
                 ),
               ),
-              
+
               // blogList
 
-              Padding(
-                padding:  EdgeInsets.only(right: bodyMargin),
-                child: SizedBox(
-                  height: size.height / 4.1,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 7,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          height: 50,
-                          width: 100,
-                          color: Colors.amberAccent,
+              SizedBox(
+                height: size.height / 3.5,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: blogList.getRange(0, 5).length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      // blog Item
+                      child: Padding(
+                        padding:  EdgeInsets.only(right: index == 0 ? bodyMargin : 15),
+
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: size.height / 5.3,
+                              width: size.width / 2.4,
+                              child: Stack(
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(16)),
+                                        image: DecorationImage(
+                                            image: NetworkImage(
+                                                blogList[index].imageUrl),
+                                            fit: BoxFit.cover)),
+                                    foregroundDecoration: const BoxDecoration(
+                                        gradient: LinearGradient(
+                                          colors: gradiantColors.blogPost,
+                                          begin: Alignment.bottomCenter,
+                                          end: Alignment.topCenter,
+                                        ),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(16))),
+                                  ),
+                                  Positioned(
+                                    bottom: 8,
+                                    left: 0,
+                                    right: 0,
+                                    child: Column(
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                            Text(
+                                              blogList[index].writer,
+                                              style: textTheme.subtitle1,
+                                            ),
+                                            Row(
+                                              children: [
+                                                Text(
+                                                  blogList[index].views,
+                                                  style: textTheme.subtitle1,
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                                width: size.width / 2.4,
+                                child: Text(
+                                  blogList[index].title,
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 2,
+                                ))
+                          ],
                         ),
-                      );
-                    },
-                  ),
+                      ),
+                    );
+                  },
                 ),
               ),
-
             ],
           ),
         ),
