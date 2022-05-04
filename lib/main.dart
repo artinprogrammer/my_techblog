@@ -40,10 +40,20 @@ class MyApp extends StatelessWidget {
                   fontSize: 16,
                   fontWeight: FontWeight.w700,
                   color: solidColors.posterTitle),
+                  headline2: TextStyle(
+                    fontSize: 14,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w300
+                  ),
               subtitle1: TextStyle(
-                  fontSize: 16,
+                  fontSize: 14,
                   fontWeight: FontWeight.w300,
                   color:solidColors.posterSubTitle),
+                  headline3: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w700,
+                    color: solidColors.seeMore,
+                  )
             )),
         home: splashScreen());
   }

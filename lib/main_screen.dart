@@ -1,10 +1,12 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 import 'package:tec_blog/Models/MyColors.dart';
+import 'package:tec_blog/Models/MyStrings.dart';
+import 'package:tec_blog/Models/fake_data.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
 
 class MainScreen extends StatelessWidget {
+
   const MainScreen({Key? key}) : super(key: key);
 
   @override
@@ -12,6 +14,7 @@ class MainScreen extends StatelessWidget {
     // needed vars
     var textTheme = Theme.of(context).textTheme;
     var size = MediaQuery.of(context).size;
+    double bodyMargin = size.width/12;
     // the UI
     return SafeArea(
       child: Scaffold(
@@ -33,6 +36,7 @@ class MainScreen extends StatelessWidget {
               const SizedBox(
                 height: 8,
               ),
+              // poster
               Stack(
                 children: [
                   Container(
@@ -42,7 +46,7 @@ class MainScreen extends StatelessWidget {
                         borderRadius:
                             const BorderRadius.all(Radius.circular(16)),
                         image: DecorationImage(
-                            image: Assets.images.programming,
+                            image: AssetImage(homePagePosterMap["imageAsset"]),
                             fit: BoxFit.cover)),
                     foregroundDecoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(16)),
@@ -62,12 +66,26 @@ class MainScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Text(
-                              "ملیکا عزیزی - یک روز پیش",
+                              homePagePosterMap["writter"] +
+                                  " - " +
+                                  homePagePosterMap["date"],
                               style: textTheme.subtitle1,
                             ),
-                            Text(
-                              "Like 253",
-                              style: textTheme.subtitle1,
+                            Row(
+                              children: [
+                                Text(
+                                  homePagePosterMap["view"],
+                                  style: textTheme.subtitle1,
+                                ),
+                                const SizedBox(
+                                  width: 8,
+                                ),
+                                const Icon(
+                                  Icons.remove_red_eye,
+                                  color: Colors.white,
+                                  size: 16,
+                                ),
+                              ],
                             ),
                           ],
                         ),
@@ -80,6 +98,88 @@ class MainScreen extends StatelessWidget {
                   ),
                 ],
               ),
+              const SizedBox(
+                height: 16,
+              ),
+              // tag list
+              SizedBox(
+                height: 60,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: tagList.length,
+                  itemBuilder: (context,index){
+                    return Padding(
+                      padding: EdgeInsets.fromLTRB(0,8,index == 0 ? bodyMargin : 15,8),
+                      child: Container(
+                        height: 60,
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          gradient: LinearGradient(
+                            colors: gradiantColors.tags,
+                            begin: Alignment.centerRight,
+                            end: Alignment.centerLeft  
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(16, 8, 8, 8),
+                          child: Row(
+                            children: [
+                              ImageIcon(
+                              Assets.icons.hashtagIcon,
+                              color: Colors.white,
+                              size: 16,
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Text(tagList[index].title,style: textTheme.headline2,)
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  }
+                ),
+              ),
+              const SizedBox(
+                height: 32,
+              ),
+              // see more
+
+              Padding(
+                padding: EdgeInsets.only(right: bodyMargin,bottom: 8),
+                child: Row(
+                  children: [
+                    ImageIcon(Assets.icons.penIcon,color: solidColors.seeMore,),
+                    const SizedBox(width: 8,),
+                     Text(MyStrings.viewViralBlog,style: textTheme.headline3,)
+                  ],
+                ),
+              ),
+              
+              // blogList
+
+              Padding(
+                padding:  EdgeInsets.only(right: bodyMargin),
+                child: SizedBox(
+                  height: size.height / 4.1,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 7,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          height: 50,
+                          width: 100,
+                          color: Colors.amberAccent,
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+
             ],
           ),
         ),
