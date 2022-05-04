@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
 import 'package:tec_blog/Models/MyColors.dart';
 import 'package:tec_blog/Models/MyStrings.dart';
@@ -178,8 +177,8 @@ class MainScreen extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       // blog Item
                       child: Padding(
-                        padding:  EdgeInsets.only(right: index == 0 ? bodyMargin : 15),
-
+                        padding: EdgeInsets.only(
+                            right: index == 0 ? bodyMargin : 15),
                         child: Column(
                           children: [
                             SizedBox(
@@ -246,6 +245,36 @@ class MainScreen extends StatelessWidget {
                       ),
                     );
                   },
+                ),
+              ),
+              const SizedBox(
+                height: 32,
+              ),
+              Padding(
+                padding: EdgeInsets.only(right: bodyMargin,bottom: 8),
+                child: Row(
+                  children: [
+                    ImageIcon(
+                      Assets.icons.micIcon,
+                      color: solidColors.seeMore, 
+                    ),
+                    const SizedBox(width: 8,),
+                    Text(
+                      MyStrings.viewViralPodcast,
+                      style: textTheme.headline3,
+                    )
+                  ],
+                ),
+              ),
+              // podcasts list
+              SizedBox(
+                height: size.height / 3.5,
+                child: ListView.builder(
+                  itemBuilder: ((context, index) {
+                    return Column(
+                      
+                    );
+                  })
                 ),
               ),
             ],

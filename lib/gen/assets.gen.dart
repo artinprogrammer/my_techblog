@@ -14,6 +14,9 @@ class $AssetsIconsGen {
   AssetGenImage get hashtagIcon =>
       const AssetGenImage('assets/icons/hashtag_icon.png');
 
+  /// File path: assets/icons/micIcon.png
+  AssetGenImage get micIcon => const AssetGenImage('assets/icons/micIcon.png');
+
   /// File path: assets/icons/penIcon.png
   AssetGenImage get penIcon => const AssetGenImage('assets/icons/penIcon.png');
 }

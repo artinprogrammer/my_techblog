@@ -8,6 +8,6 @@
 class FontFamily {
   FontFamily._();
 
-  /// Font family: IranSans
-  static const String iranSans = 'IranSans';
+  /// Font family: dana
+  static const String dana = 'dana';
 }

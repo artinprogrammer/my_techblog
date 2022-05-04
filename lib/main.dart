@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tec_blog/Models/MyColors.dart';
-import 'package:tec_blog/gen/assets.gen.dart';
 import 'package:tec_blog/splash_screen.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
