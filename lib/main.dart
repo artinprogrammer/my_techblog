@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
           Locale('fa', '') //farsi,
         ],
         theme: ThemeData(
-            fontFamily: 'IranSans',
+            fontFamily: 'dana',
             brightness: Brightness.light,
             textTheme: const TextTheme(
               headline1: TextStyle(

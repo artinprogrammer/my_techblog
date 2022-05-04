@@ -77,11 +77,11 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: IranSans
+    - family: dana
       fonts:
-        - asset: assets/fonts/FontsFree-Net-ir_sans.ttf
+        - asset: assets/fonts/DANA-BOLD.TTF
           weight: 700
-        - asset: assets/fonts/FontsFree-Net-ir_sans.ttf
+        - asset: assets/fonts/DANA-REGULAR.TTF
           weight: 300
   #         style: italic
   #   - family: Trajan Pro

@@ -11,8 +11,8 @@ class BlogModel {
   int id;
   String imageUrl;
   String title;
-  String writter;
-  String writterImageUrl;
+  String writer;
+  String writerImageUrl;
   String date;
   String content;
   String views;
@@ -22,8 +22,8 @@ class BlogModel {
     required this.id,
     required this.imageUrl,
     required this.title,
-    required this.writter,
-    required this.writterImageUrl,
+    required this.writer,
+    required this.writerImageUrl,
     required this.date,
     required this.content,
     required this.views,
