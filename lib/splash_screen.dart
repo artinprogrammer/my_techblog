@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:tec_blog/Models/MyColors.dart';
@@ -13,6 +13,7 @@ class splashScreen extends StatefulWidget {
 class _splashScreenState extends State<splashScreen> {
   @override
   void initState() {
+    print("hi");
     Future.delayed(Duration(seconds: 3)).then((value) {
       Navigator.of(context)
           .pushReplacement(MaterialPageRoute(builder: (context) => MainScreen()));
