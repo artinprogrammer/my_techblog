@@ -53,6 +53,7 @@ class MyApp extends StatelessWidget {
                     color: solidColors.seeMore,
                   )
             )),
-        home: splashScreen());
+        home: splashScreen()
+        );
   }
 }
