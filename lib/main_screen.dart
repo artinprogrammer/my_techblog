@@ -353,6 +353,7 @@ class MainScreen extends StatelessWidget {
                 ),
               ),
             ),
+            // bottom navigation
             Positioned(
               bottom: 0,
               left: 0,
