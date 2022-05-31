@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tec_blog/Models/MyColors.dart';
-import 'package:tec_blog/view/splash_screen.dart';
-
+import 'package:tec_blog/view/register_intro.dart';
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: solidColors.statusBarColor,
+      statusBarColor: SolidColors.statusBarColor,
       statusBarIconBrightness: Brightness.dark,
-      systemNavigationBarColor: solidColors.navigationColor,
+      systemNavigationBarColor: SolidColors.navigationColor,
       systemNavigationBarIconBrightness: Brightness.dark));
 
   runApp(const MyApp());
@@ -22,12 +21,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        localizationsDelegates: const[
+        localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        supportedLocales: const[
+        supportedLocales: const [
           Locale('fa', '') //farsi,
         ],
         theme: ThemeData(
@@ -37,23 +36,27 @@ class MyApp extends StatelessWidget {
               headline1: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w700,
-                  color: solidColors.posterTitle),
-                  headline2: TextStyle(
-                    fontSize: 14,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w300
-                  ),
+                  color: SolidColors.posterTitle),
+              headline2: TextStyle(
+                  fontSize: 14,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w300),
               subtitle1: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w300,
-                  color:solidColors.posterSubTitle),
-                  headline3: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
-                    color: solidColors.seeMore,
-                  )
+                  color: SolidColors.posterSubTitle),
+              headline3: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w700,
+                color: SolidColors.seeMore,
+              ),
+              headline4: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w700,
+                color:  Color.fromARGB(255, 70, 70, 70),
+              ),
             )),
-        home: splashScreen()
-        );
+        // home: splashScreen());
+        home: const RegisterIntro());
   }
 }

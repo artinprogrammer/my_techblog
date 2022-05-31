@@ -5,18 +5,19 @@ import 'package:tec_blog/Models/MyColors.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
 import 'package:tec_blog/view/main_screen.dart';
 
-class splashScreen extends StatefulWidget {
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
+
   @override
-  State<splashScreen> createState() => _splashScreenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _splashScreenState extends State<splashScreen> {
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    print("hi");
-    Future.delayed(Duration(seconds: 3)).then((value) {
+    Future.delayed(const Duration(seconds: 3)).then((value) {
       Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (context) => MainScreen()));
+          .pushReplacement(MaterialPageRoute(builder: (context) => const MainScreen()));
     });
 
     super.initState();
@@ -35,7 +36,7 @@ class _splashScreenState extends State<splashScreen> {
                 height: 32,
               ),
               const SpinKitFadingCube(
-                color: solidColors.primaryColor,
+                color: SolidColors.primaryColor,
                 size: 32,
               )
             ],
