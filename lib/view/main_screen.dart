@@ -48,8 +48,8 @@ class _MainScreenState extends State<MainScreen> {
               child: IndexedStack(
                 index: selectedPageIndex,
                 children: [
-                  Center(child: HomeScreen(size: size, textTheme: textTheme, bodyMargin: bodyMargin)),
-                  Center(child: ProfileScreen(size: size, textTheme: textTheme, bodyMargin: bodyMargin))
+                  HomeScreen(size: size, textTheme: textTheme, bodyMargin: bodyMargin),
+                  ProfileScreen(size: size, textTheme: textTheme, bodyMargin: bodyMargin)
                 ],
               )
             ),

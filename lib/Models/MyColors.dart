@@ -16,6 +16,7 @@ class SolidColors{
   static const Color subText = Color.fromARGB(255, 197, 197, 197);
   static const Color seeMore = Color.fromARGB(255, 40, 107, 184);
   static const Color dividerColor = Color.fromARGB(255, 112, 112, 112);
+  static const Color hintText = Color.fromARGB(255, 219, 219, 219);
 
 }class GradienColors{
   static const List<Color> bottomNav = [ Color.fromARGB(255, 25, 0, 94), Color.fromARGB(255, 68, 4, 87) ];

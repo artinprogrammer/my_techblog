@@ -20,76 +20,79 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image(image: Assets.images.profileAvatar,height: 100,),
-          const SizedBox(height: 12,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ImageIcon(Assets.icons.penIcon,color: SolidColors.seeMore,),
-              const SizedBox(width: 8,),
-              Text(
-                MyStrings.imageProfileEdit,
-                style: textTheme.headline3,
-              )
-            ],
-          ),
-          const SizedBox(height: 60,),
-          Text("فاطمه امیری",style: textTheme.headline4,),
-          Text("fatemehamiri@gmail.com",style: textTheme.headline4,),
-          const SizedBox(height: 40,),
-          TechDivider(size: size),
-          InkWell(
-            splashColor: SolidColors.primaryColor,
-            onTap: (){
-              // sth will happen
-            },
-            child: SizedBox(
-              height: 45,
-              child: Center(
-                child: Text(
-                  MyStrings.myFavoriteBlogs,
-                  style: textTheme.headline4,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 24),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image(image: Assets.images.profileAvatar,height: 100,),
+            const SizedBox(height: 12,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ImageIcon(Assets.icons.penIcon,color: SolidColors.seeMore,),
+                const SizedBox(width: 8,),
+                Text(
+                  MyStrings.imageProfileEdit,
+                  style: textTheme.headline3,
+                )
+              ],
+            ),
+            const SizedBox(height: 60,),
+            Text("فاطمه امیری",style: textTheme.headline4,),
+            Text("fatemehamiri@gmail.com",style: textTheme.headline4,),
+            const SizedBox(height: 40,),
+            TechDivider(size: size),
+            InkWell(
+              splashColor: SolidColors.primaryColor,
+              onTap: (){
+                // sth will happen
+              },
+              child: SizedBox(
+                height: 45,
+                child: Center(
+                  child: Text(
+                    MyStrings.myFavoriteBlogs,
+                    style: textTheme.headline4,
+                  ),
                 ),
               ),
             ),
-          ),
-          TechDivider(size: size),
-          InkWell(
-            splashColor: SolidColors.primaryColor,
-            onTap: (){
-              // sth will happen
-            },
-            child: SizedBox(
-              height: 45,
-              child: Center(
-                child: Text(
-                  MyStrings.myFavoritePodcasts,
-                  style: textTheme.headline4,
+            TechDivider(size: size),
+            InkWell(
+              splashColor: SolidColors.primaryColor,
+              onTap: (){
+                // sth will happen
+              },
+              child: SizedBox(
+                height: 45,
+                child: Center(
+                  child: Text(
+                    MyStrings.myFavoritePodcasts,
+                    style: textTheme.headline4,
+                  ),
                 ),
               ),
             ),
-          ),
-          TechDivider(size: size),
-          InkWell(
-            splashColor: SolidColors.primaryColor,
-            onTap: (){
-              // sth will happen
-            },
-            child: SizedBox(
-              height: 45,
-              child: Center(
-                child: Text(
-                  MyStrings.logOut,
-                  style: textTheme.headline4,
+            TechDivider(size: size),
+            InkWell(
+              splashColor: SolidColors.primaryColor,
+              onTap: (){
+                // sth will happen
+              },
+              child: SizedBox(
+                height: 45,
+                child: Center(
+                  child: Text(
+                    MyStrings.logOut,
+                    style: textTheme.headline4,
+                  ),
                 ),
               ),
             ),
-          ),
-          const SizedBox(height: 70,)
-        ],
+            const SizedBox(height: 70,)
+          ],
+        ),
       ),
     );
   }
