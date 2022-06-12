@@ -3,6 +3,8 @@ import '../Models/fake_data.dart';
 import '../Models/MyColors.dart';
 import '../Models/MyStrings.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
+
+import '../my_components.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
     Key? key,
@@ -326,42 +328,14 @@ class HomePageTagList extends StatelessWidget {
             return Padding(
               padding: EdgeInsets.fromLTRB(
                   0, 8, index == 0 ? bodyMargin : 15, 8),
-              child: Container(
-                height: 60,
-                decoration: const BoxDecoration(
-                  borderRadius:
-                      BorderRadius.all(Radius.circular(20)),
-                  gradient: LinearGradient(
-                      colors: GradienColors.tags,
-                      begin: Alignment.centerRight,
-                      end: Alignment.centerLeft),
-                ),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.fromLTRB(16, 8, 8, 8),
-                  child: Row(
-                    children: [
-                      ImageIcon(
-                        Assets.icons.hashtagIcon,
-                        color: Colors.white,
-                        size: 16,
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        tagList[index].title,
-                        style: textTheme.headline2,
-                      )
-                    ],
-                  ),
-                ),
-              ),
+              child: MainTags(textTheme: textTheme,index: index),
             );
           }),
     );
   }
 }
+
+
 
 class HomePagePoster extends StatelessWidget {
   const HomePagePoster({

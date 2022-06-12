@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class SolidColors{
   static const Color posterTitle = Color.fromARGB(255, 255, 255, 255);
@@ -17,6 +18,7 @@ class SolidColors{
   static const Color seeMore = Color.fromARGB(255, 40, 107, 184);
   static const Color dividerColor = Color.fromARGB(255, 112, 112, 112);
   static const Color hintText = Color.fromARGB(255, 219, 219, 219);
+  static const Color surface = Color.fromARGB(255, 242, 242, 242);
 
 }class GradienColors{
   static const List<Color> bottomNav = [ Color.fromARGB(255, 25, 0, 94), Color.fromARGB(255, 68, 4, 87) ];

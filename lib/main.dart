@@ -3,7 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tec_blog/Models/MyColors.dart';
 import 'package:tec_blog/view/main_screen.dart';
+import 'package:tec_blog/view/my_cats.dart';
 import 'package:tec_blog/view/register_intro.dart';
+import 'package:tec_blog/view/splash_screen.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -87,6 +89,6 @@ class MyApp extends StatelessWidget {
               ),
             )),
         // home: splashScreen());
-        home: const RegisterIntro());
+        home: const MyCats());
   }
 }

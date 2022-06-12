@@ -12,7 +12,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-    var selectedPageIndex = 0;
+  var selectedPageIndex = 0;
   @override
   Widget build(BuildContext context) {
     // needed vars
@@ -45,18 +45,20 @@ class _MainScreenState extends State<MainScreen> {
         body: Stack(
           children: [
             Positioned.fill(
-              child: IndexedStack(
-                index: selectedPageIndex,
-                children: [
-                  HomeScreen(size: size, textTheme: textTheme, bodyMargin: bodyMargin),
-                  ProfileScreen(size: size, textTheme: textTheme, bodyMargin: bodyMargin)
-                ],
-              )
-            ),
+                child: IndexedStack(
+              index: selectedPageIndex,
+              children: [
+                HomeScreen(
+                    size: size, textTheme: textTheme, bodyMargin: bodyMargin),
+                ProfileScreen(
+                    size: size, textTheme: textTheme, bodyMargin: bodyMargin)
+              ],
+            )),
             BottomNav(
               size: size,
               bodyMargin: bodyMargin,
-              changeMainScreen: (int index){
+              selectedPageIndex: selectedPageIndex,
+              changeMainScreen: (int index) {
                 setState(() {
                   selectedPageIndex = index;
                 });
@@ -70,16 +72,18 @@ class _MainScreenState extends State<MainScreen> {
 }
 
 class BottomNav extends StatelessWidget {
-  const BottomNav({
-    Key? key,
-    required this.size,
-    required this.bodyMargin,
-    required this.changeMainScreen
-  }) : super(key: key);
+  const BottomNav(
+      {Key? key,
+      required this.size,
+      required this.bodyMargin,
+      required this.changeMainScreen,
+      required this.selectedPageIndex})
+      : super(key: key);
 
   final Size size;
   final double bodyMargin;
   final Function(int) changeMainScreen;
+  final selectedPageIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -99,30 +103,60 @@ class BottomNav extends StatelessWidget {
           child: Container(
             height: size.height / 8,
             decoration: const BoxDecoration(
-                gradient:
-                    LinearGradient(colors: GradienColors.bottomNav),
+                gradient: LinearGradient(colors: GradienColors.bottomNav),
                 borderRadius: BorderRadius.all(Radius.circular(18))),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                IconButton(
-                    onPressed:() => changeMainScreen(0),
-                    icon: ImageIcon(
-                      Assets.icons.home,
-                      color: Colors.white,
-                    )),
-                IconButton(
-                    onPressed: () {},
-                    icon: ImageIcon(
-                      Assets.icons.write,
-                      color: Colors.white,
-                    )),
-                IconButton(
-                    onPressed: () => changeMainScreen(1),
-                    icon: ImageIcon(
-                      Assets.icons.user,
-                      color: Colors.white,
-                    )),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                        onPressed: () => changeMainScreen(0),
+                        icon: ImageIcon(
+                          Assets.icons.home,
+                          color: selectedPageIndex == 0
+                              ? Colors.blue
+                              : Colors.white,
+                        )),
+                    selectedPageIndex == 0
+                        ? const Text(
+                            "Home",
+                            style: TextStyle(color: Colors.blue),
+                          )
+                        : const SizedBox()
+                  ],
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                        onPressed: () {},
+                        icon: ImageIcon(
+                          Assets.icons.write,
+                          color: Colors.white,
+                        )),
+                  ],
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                        onPressed: () => changeMainScreen(1),
+                        icon: ImageIcon(
+                          Assets.icons.user,
+                          color: selectedPageIndex == 1
+                              ? Colors.green
+                              : Colors.white,
+                        )),
+                    selectedPageIndex == 1
+                        ? const Text(
+                            "Acount",
+                            style: TextStyle(color: Colors.green),
+                          )
+                        : const SizedBox()
+                  ],
+                ),
               ],
             ),
           ),

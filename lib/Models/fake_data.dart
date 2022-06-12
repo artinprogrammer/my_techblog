@@ -1,7 +1,7 @@
 import 'package:tec_blog/gen/assets.gen.dart';
 import 'data_models.dart';
 
-Map homePagePosterMap = {
+Map<String,dynamic> homePagePosterMap = {
   "imageAsset": Assets.images.programming.path,
   "writter": "ملیکا عزیزی",
   "date": "یک روز پیش",
@@ -18,6 +18,8 @@ List<HashTagModel> tagList = [
   HashTagModel(title: "iot"),
   HashTagModel(title: "دارت"),
 ];
+
+List<HashTagModel> selectedTags = [];
 
 List<BlogModel> blogList = [
   BlogModel(
