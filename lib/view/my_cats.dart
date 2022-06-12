@@ -80,7 +80,9 @@ class _MyCatsState extends State<MyCats> {
                         return InkWell(
                             onTap: () {
                               setState(() {
-                                selectedTags.add(tagList[index]);
+                                if (!selectedTags.contains(tagList[index])) {
+                                  selectedTags.add(tagList[index]);
+                                }
                               });
                             },
                             child:
