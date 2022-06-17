@@ -3,6 +3,7 @@ import 'package:tec_blog/Models/MyColors.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
 import 'package:tec_blog/view/home_screen.dart';
 import 'package:tec_blog/view/profile_screen.dart';
+import 'package:tec_blog/view/register_intro.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -10,6 +11,8 @@ class MainScreen extends StatefulWidget {
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
+
+final GlobalKey<ScaffoldState> _key = GlobalKey();
 
 class _MainScreenState extends State<MainScreen> {
   var selectedPageIndex = 0;
@@ -21,15 +24,81 @@ class _MainScreenState extends State<MainScreen> {
     double bodyMargin = size.width / 12;
     return SafeArea(
       child: Scaffold(
+        key: _key,
+        drawer: Drawer(
+          backgroundColor: SolidColors.scafoldBg,
+          child: Padding(
+            padding: EdgeInsets.only(left: bodyMargin, right: bodyMargin),
+            child: ListView(
+              children: [
+                DrawerHeader(
+                    child: Center(
+                  child: Image.asset(
+                    Assets.images.logo.path,
+                    scale: 3,
+                  ),
+                )),
+                ListTile(
+                  title: Text(
+                    "پروفایل کاربری",
+                    style: textTheme.headline4,
+                  ),
+                  onTap: () {
+                    _key.currentState!.closeDrawer();
+                  },
+                ),
+                const Divider(
+                  color: SolidColors.dividerColor,
+                ),
+                ListTile(
+                  title: Text(
+                    "درباره تک بلاگ",
+                    style: textTheme.headline4,
+                  ),
+                  onTap: () {},
+                ),
+                const Divider(
+                  color: SolidColors.dividerColor,
+                ),
+                ListTile(
+                  title: Text(
+                    "اشتراک گذاری تک بلاگ",
+                    style: textTheme.headline4,
+                  ),
+                  onTap: () {},
+                ),
+                const Divider(
+                  color: SolidColors.dividerColor,
+                ),
+                ListTile(
+                  title: Text(
+                    "گیت هاب تک بلاگ",
+                    style: textTheme.headline4,
+                  ),
+                  onTap: () {},
+                ),
+                const Divider(
+                  color: SolidColors.dividerColor,
+                ),
+              ],
+            ),
+          ),
+        ),
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           backgroundColor: SolidColors.scafoldBg,
           elevation: 0,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              const Icon(
-                Icons.menu,
-                color: Colors.black,
+              InkWell(
+                onTap: () {
+                  _key.currentState!.openDrawer();
+                },
+                child: const Icon(
+                  Icons.menu,
+                  color: Colors.black,
+                ),
               ),
               Image(
                 image: Assets.images.logo,
@@ -51,7 +120,8 @@ class _MainScreenState extends State<MainScreen> {
                 HomeScreen(
                     size: size, textTheme: textTheme, bodyMargin: bodyMargin),
                 ProfileScreen(
-                    size: size, textTheme: textTheme, bodyMargin: bodyMargin)
+                    size: size, textTheme: textTheme, bodyMargin: bodyMargin),
+                RegisterIntro(size: size, textTheme: textTheme, bodyMargin: bodyMargin)
               ],
             )),
             BottomNav(
@@ -131,11 +201,16 @@ class BottomNav extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          changeMainScreen(2);
+                        },
                         icon: ImageIcon(
                           Assets.icons.write,
-                          color: Colors.white,
+                          color: selectedPageIndex == 2 ? Colors.red : Colors.white,
                         )),
+                    selectedPageIndex == 2 ?
+                    Text("Write",style: TextStyle(color: Colors.red),):
+                    SizedBox()
                   ],
                 ),
                 Column(

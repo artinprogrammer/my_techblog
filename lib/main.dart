@@ -89,6 +89,6 @@ class MyApp extends StatelessWidget {
               ),
             )),
         // home: splashScreen());
-        home: const MyCats());
+        home: const MainScreen());
   }
 }

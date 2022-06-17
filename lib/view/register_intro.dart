@@ -7,48 +7,50 @@ import 'package:tec_blog/view/my_cats.dart';
 import 'package:validators/validators.dart';
 
 class RegisterIntro extends StatelessWidget {
-  const RegisterIntro({Key? key}) : super(key: key);
+    const RegisterIntro({
+    Key? key,
+    required this.size,
+    required this.textTheme,
+    required this.bodyMargin,
+  }) : super(key: key);
 
+  final Size size;
+  final TextTheme textTheme;
+  final double bodyMargin;
   @override
   Widget build(BuildContext context) {
-    var textTheme = Theme.of(context).textTheme;
-    var size = MediaQuery.of(context).size;
-    return SafeArea(
-      child: Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SvgPicture.asset(
-                Assets.images.tcbot,
-                height: 100,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 16),
-                child: RichText(
-                    textAlign: TextAlign.center,
-                    text: TextSpan(
-                        text: MyStrings.welcom, style: textTheme.headline4
-                        // style: Te
-                        )),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 32),
-                child: ElevatedButton(
-                  onPressed: () {
-                    _showEmailBottomSheet(context, size, textTheme);
-                  },
-                  child: const Text(
-                    "بزن بریم",
-                    // style: textTheme.headline1,
-                  ),
+    return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SvgPicture.asset(
+              Assets.images.tcbot,
+              height: 100,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 16),
+              child: RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                      text: MyStrings.welcom, style: textTheme.headline4
+                      // style: Te
+                      )),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 32),
+              child: ElevatedButton(
+                onPressed: () {
+                  _showEmailBottomSheet(context, size, textTheme);
+                },
+                child: const Text(
+                  "بزن بریم",
+                  // style: textTheme.headline1,
                 ),
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
-      ),
-    );
+      );
   }
 
   Future<dynamic> _showEmailBottomSheet(
