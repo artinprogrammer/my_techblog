@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tec_blog/Models/MyColors.dart';
-import 'package:tec_blog/Models/MyStrings.dart';
+import 'package:tec_blog/components/my_strings.dart';
+import 'package:tec_blog/components/my_colors.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
 import 'package:tec_blog/view/my_cats.dart';
 import 'package:validators/validators.dart';

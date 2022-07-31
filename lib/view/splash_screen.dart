@@ -1,7 +1,7 @@
 // import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:tec_blog/Models/MyColors.dart';
+import 'package:tec_blog/components/my_colors.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
 import 'package:tec_blog/view/main_screen.dart';
 

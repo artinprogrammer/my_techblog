@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:tec_blog/Models/MyColors.dart';
+import 'package:tec_blog/components/my_colors.dart';
 import 'package:tec_blog/view/main_screen.dart';
 import 'package:tec_blog/view/my_cats.dart';
 import 'package:tec_blog/view/register_intro.dart';
