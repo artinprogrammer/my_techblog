@@ -1,4 +1,5 @@
 class MyStrings{
+  static const String techBlogGithubUrl = "https://github.com/sasansafari/techblog";
   static const String viewViralBlog = "مشاهده داغ ترین نوشته ها";
   static const String viewViralPodcast = "مشاهده داغ ترین پادکست ها";
   static const String realtedArticles = "مشاهده نوشته های مرتبط";
@@ -20,4 +21,11 @@ class MyStrings{
   تبریک میگم ، ایمیل با موفقیت تایید شد
   لطفا اطلاعات ثبت نام رو کامل کن 
   """;
+  static const String shareText = """
+  من از تک بلاگ استفاده میکنم خیلی باحاله تو هم نصبش کن\n
+
+  www.sasansafari.com
+
+  """
+;
 }

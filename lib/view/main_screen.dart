@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:tec_blog/components/api_constant.dart';
 import 'package:tec_blog/components/my_colors.dart';
+import 'package:tec_blog/components/my_components.dart';
+import 'package:tec_blog/components/my_strings.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
+import 'package:tec_blog/services/dio_service.dart';
 import 'package:tec_blog/view/home_screen.dart';
 import 'package:tec_blog/view/profile_screen.dart';
 import 'package:tec_blog/view/register_intro.dart';
-
-class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
-
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
+import 'package:url_launcher/url_launcher.dart';
 
 final GlobalKey<ScaffoldState> _key = GlobalKey();
 
-class _MainScreenState extends State<MainScreen> {
-  var selectedPageIndex = 0;
+class MainScreen extends StatelessWidget {
+  RxInt selectedPageIndex = 0.obs;
   @override
   Widget build(BuildContext context) {
     // needed vars
@@ -65,7 +65,9 @@ class _MainScreenState extends State<MainScreen> {
                     "اشتراک گذاری تک بلاگ",
                     style: textTheme.headline4,
                   ),
-                  onTap: () {},
+                  onTap: () async{
+                    await Share.share(MyStrings.shareText);
+                  },
                 ),
                 const Divider(
                   color: SolidColors.dividerColor,
@@ -75,7 +77,9 @@ class _MainScreenState extends State<MainScreen> {
                     "گیت هاب تک بلاگ",
                     style: textTheme.headline4,
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    myLaunchUrl(MyStrings.techBlogGithubUrl);
+                  },
                 ),
                 const Divider(
                   color: SolidColors.dividerColor,
@@ -114,24 +118,25 @@ class _MainScreenState extends State<MainScreen> {
         body: Stack(
           children: [
             Positioned.fill(
-                child: IndexedStack(
-              index: selectedPageIndex,
-              children: [
-                HomeScreen(
-                    size: size, textTheme: textTheme, bodyMargin: bodyMargin),
-                ProfileScreen(
-                    size: size, textTheme: textTheme, bodyMargin: bodyMargin),
-                RegisterIntro(size: size, textTheme: textTheme, bodyMargin: bodyMargin)
-              ],
+                child: Obx(
+              () => IndexedStack(
+                index: selectedPageIndex.value,
+                children: [
+                  HomeScreen(
+                      size: size, textTheme: textTheme, bodyMargin: bodyMargin),
+                  ProfileScreen(
+                      size: size, textTheme: textTheme, bodyMargin: bodyMargin),
+                  RegisterIntro(
+                      size: size, textTheme: textTheme, bodyMargin: bodyMargin)
+                ],
+              ),
             )),
             BottomNav(
               size: size,
               bodyMargin: bodyMargin,
               selectedPageIndex: selectedPageIndex,
               changeMainScreen: (int index) {
-                setState(() {
-                  selectedPageIndex = index;
-                });
+                selectedPageIndex.value = index;
               },
             )
           ],
@@ -140,6 +145,7 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 }
+
 
 class BottomNav extends StatelessWidget {
   const BottomNav(
@@ -178,59 +184,28 @@ class BottomNav extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton(
-                        onPressed: () => changeMainScreen(0),
-                        icon: ImageIcon(
-                          Assets.icons.home,
-                          color: selectedPageIndex == 0
-                              ? Colors.blue
-                              : Colors.white,
-                        )),
-                    selectedPageIndex == 0
-                        ? const Text(
-                            "Home",
-                            style: TextStyle(color: Colors.blue),
-                          )
-                        : const SizedBox()
-                  ],
+                IconButton(
+                  onPressed: () => changeMainScreen(0),
+                  icon: ImageIcon(
+                    Assets.icons.home,
+                  ),
+                  color: Colors.white,
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton(
-                        onPressed: () {
-                          changeMainScreen(2);
-                        },
-                        icon: ImageIcon(
-                          Assets.icons.write,
-                          color: selectedPageIndex == 2 ? Colors.red : Colors.white,
-                        )),
-                    selectedPageIndex == 2 ?
-                    Text("Write",style: TextStyle(color: Colors.red),):
-                    SizedBox()
-                  ],
+                IconButton(
+                  onPressed: () {
+                    changeMainScreen(2);
+                  },
+                  icon: ImageIcon(
+                    Assets.icons.write,
+                  ),
+                  color: Colors.white,
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton(
-                        onPressed: () => changeMainScreen(1),
-                        icon: ImageIcon(
-                          Assets.icons.user,
-                          color: selectedPageIndex == 1
-                              ? Colors.green
-                              : Colors.white,
-                        )),
-                    selectedPageIndex == 1
-                        ? const Text(
-                            "Acount",
-                            style: TextStyle(color: Colors.green),
-                          )
-                        : const SizedBox()
-                  ],
+                IconButton(
+                  onPressed: () => changeMainScreen(1),
+                  icon: ImageIcon(
+                    Assets.icons.user,
+                  ),
+                  color: Colors.white,
                 ),
               ],
             ),
