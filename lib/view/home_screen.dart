@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:tec_blog/controller/home_screen_controller.dart';
 import '../Models/fake_data.dart';
@@ -40,7 +39,7 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(
                   height: 16,
                 ),
-                HomePageTagList(bodyMargin: bodyMargin, textTheme: textTheme),
+                tags(),
                 const SizedBox(
                   height: 32,
                 ),
@@ -65,8 +64,7 @@ class HomeScreen extends StatelessWidget {
   Widget topVisited() {
     return SizedBox(
       height: size.height / 3.5,
-      child: Obx(
-        () => ListView.builder(
+      child: ListView.builder(
           physics: const BouncingScrollPhysics(),
           scrollDirection: Axis.horizontal,
           itemCount: homeScreenController.topVisited.length,
@@ -168,15 +166,13 @@ class HomeScreen extends StatelessWidget {
             );
           },
         ),
-      ),
     );
   }
 
   Widget topPodcast() {
     return SizedBox(
       height: size.height / 3.5,
-      child: Obx(
-        () => ListView.builder(
+      child: ListView.builder(
             physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
             itemCount: homeScreenController.topPodcast.length,
@@ -225,7 +221,6 @@ class HomeScreen extends StatelessWidget {
                 ),
               );
             }),
-      ),
     );
   }
 
@@ -261,7 +256,7 @@ class HomeScreen extends StatelessWidget {
         Positioned(
           bottom: 8,
           left: 0,
-          right: 0,
+          right: 8,
           child: Column(
             children: [
               Text(
@@ -272,6 +267,23 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  Widget tags(){
+    return SizedBox(
+      height: 60,
+      child: ListView.builder(
+          physics: const BouncingScrollPhysics(),
+          scrollDirection: Axis.horizontal,
+          itemCount: homeScreenController.tagsList.length,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding:
+                  EdgeInsets.fromLTRB(0, 8, index == 0 ? bodyMargin : 15, 8),
+              child: MainTags(textTheme: textTheme, index: index),
+            );
+          }),
     );
   }
 }
@@ -343,31 +355,3 @@ class SeeMoreBlog extends StatelessWidget {
   }
 }
 
-class HomePageTagList extends StatelessWidget {
-  const HomePageTagList({
-    Key? key,
-    required this.bodyMargin,
-    required this.textTheme,
-  }) : super(key: key);
-
-  final double bodyMargin;
-  final TextTheme textTheme;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 60,
-      child: ListView.builder(
-          physics: const BouncingScrollPhysics(),
-          scrollDirection: Axis.horizontal,
-          itemCount: tagList.length,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding:
-                  EdgeInsets.fromLTRB(0, 8, index == 0 ? bodyMargin : 15, 8),
-              child: MainTags(textTheme: textTheme, index: index),
-            );
-          }),
-    );
-  }
-}
